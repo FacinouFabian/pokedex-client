@@ -4,7 +4,8 @@
 //
 // import User from 'path/to/interfaces';
 
-export type User = {
-  id: number
-  name: string
+import { ParsedUrlQuery } from "querystring";
+
+export interface PokemonParams extends ParsedUrlQuery {
+  name: string;
 }

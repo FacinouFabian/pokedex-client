@@ -6,10 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -23,38 +20,13 @@
     "rootDir": ".",
     "baseUrl": "./",
     "paths": {
-      "@/core/*": [
-        "core/*"
-      ],
-      "@/layouts/*": [
-        "core/layouts/*"
-      ],
-      "@/anchors/*": [
-        "core/anchors/*"
-      ],
-      "@/components": [
-        "core/components"
-      ],
-      "@/components/*": [
-        "core/components/*"
-      ],
-      "@/public/*": [
-        "public/*"
-      ],
-      "@/data/": [
-        "data/"
-      ],
-      "@/data/*": [
-        "data/*"
-      ],
-    },
+      "@/core/*": ["core/*"],
+      "@/layouts/*": ["core/layouts/*"],
+      "@/contexts/*": ["core/context/*"],
+      "@/components": ["core/components"],
+      "@/components/*": ["core/components/*"]
+    }
   },
-  "exclude": [
-    "postcss.config.js",
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["postcss.config.js", "node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

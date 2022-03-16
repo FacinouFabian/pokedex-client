@@ -1,0 +1,18 @@
+export default [
+  "normal",
+  "feu",
+  "eau",
+  "plante",
+  "électrique",
+  "insecte",
+  "roche",
+  "sol",
+  "acier",
+  "poison",
+  "combat",
+  "spectre",
+  "psy",
+  "glace",
+  "dragon",
+  "vol",
+];
