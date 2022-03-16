@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="h-screen font-sans">
+        <body className="font-sans">
           <Main />
           <NextScript />
         </body>
