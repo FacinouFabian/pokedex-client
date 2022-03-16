@@ -1,32 +1,35 @@
-import React, { FunctionComponent } from 'react'
-import Head from 'next/head'
-import { Nav } from '@/components'
+import * as React from "react";
+import Head from "next/head";
 
-interface Props {
-    children: React.ReactNode
-    title?: string,
-}
+import Nav from "@/components/Nav";
 
-const Showcase: FunctionComponent<Props> = ({ title, children }) => {
-    return (
-        <>
-            <Head>
-                <meta name='viewport' content='width=device-width, initial-scale=1' />
-                <meta charSet='utf-8' />
+type Props = {
+  children?: React.ReactNode;
+  title?: string;
+  className: string;
+};
 
-                <title>{title || 'Welcome'}</title>
-            </Head>
+const Layout: React.FunctionComponent<Props> = ({
+  title,
+  children,
+  className,
+}): JSX.Element => {
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
 
-            <header>
-                <Nav />
-            </header>
+        <title>{title || "Pokédex"}</title>
+      </Head>
 
-            <main className={`w-full my-0 mx-auto block bg-blue-300`}>
-                {children}
-            </main>
-        </>
-    )
-}
+      <div className={`pokedex-header ${className}`}>
+        <img src={"logo.png"} alt="" />
+      </div>
+      <Nav />
+      <main className={`layout ${className}`}>{children}</main>
+    </>
+  );
+};
 
-
-export default Showcase
+export default Layout;

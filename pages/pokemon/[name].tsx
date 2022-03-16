@@ -3,7 +3,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { PokemonParams } from "interfaces";
 
 import Details from "@/core/components/Details";
-import Layout from "@/core/components/Layout";
+import Layout from "@/layouts/showcase";
+import { useTheme } from "@/core/contexts/themeContext";
 
 type Props = {
   pokemon: any;
@@ -14,8 +15,13 @@ const Pokemon: React.FunctionComponent<Props> = ({
   pokemon,
   colors,
 }: Props): JSX.Element => {
+  const [theme] = useTheme();
+
   return (
-    <Layout title={`${pokemon.nom} | Details`}>
+    <Layout
+      title={`${pokemon.nom} | Details`}
+      className={`theme-${theme.value}`}
+    >
       <Details pokemon={pokemon} colors={colors} />
     </Layout>
   );

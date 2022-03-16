@@ -1,24 +1,14 @@
 import * as React from "react";
-
-import pokemonTypes from "@/core/constants/pokemonTypes";
-import Type from "./Type";
+import { useRouter } from "next/router";
 
 type Props = {
   pokemon: any;
   colors: any[];
 };
 
-const Pokemons: React.FunctionComponent<Props> = ({
-  pokemon,
-  colors,
-}): JSX.Element => {
+const Pokemons: React.FunctionComponent<Props> = ({ pokemon }): JSX.Element => {
   const [pokemonName, setPokemonName] = React.useState<string>("");
-  const [show, setShow] = React.useState<boolean>(false);
-
-  const urlTypes = "http://localhost:3000/types/";
-  const url = "http://localhost:3000/pokemon/";
-
-  const tab = pokemonTypes;
+  const router = useRouter();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -29,36 +19,7 @@ const Pokemons: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const link = url + pokemonName;
-    window.location.href = link;
-    event.preventDefault();
-  };
-
-  const handleShow = (event: React.MouseEvent<HTMLInputElement>) => {
-    const buttons = document.getElementsByClassName(
-      "buttons"
-    )[0] as HTMLDivElement;
-    const filterButton = document.getElementsByClassName(
-      "filterButton"
-    )[0] as HTMLInputElement;
-    if (show === true) {
-      setShow(false);
-      buttons.style.display = "block";
-      filterButton.value = "Cacher";
-      event.preventDefault();
-    } else {
-      setShow(true);
-      buttons.style.display = "none";
-      filterButton.value = "Filtres";
-    }
-  };
-
-  const handleType = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const button: HTMLButtonElement = event.currentTarget;
-    const newT = button.value;
-    const newRef =
-      newT.charAt(0).toUpperCase() + newT.substring(1).toLowerCase();
-    window.location.href = urlTypes + newRef;
+    router.push("/pokemon/" + pokemonName);
     event.preventDefault();
   };
 
@@ -85,22 +46,7 @@ const Pokemons: React.FunctionComponent<Props> = ({
           </button>
         </div>
       </form>
-      <input
-        className="btn btn-danger filterButton"
-        onClick={handleShow}
-        type="reset"
-        value="Cacher/Montrer filtres"
-      ></input>
-      <div className="buttons">
-        {tab.map((type: string, key: number) => (
-          <Type
-            key={key}
-            type={type}
-            color={colors[type]}
-            onClick={handleType}
-          />
-        ))}
-      </div>
+
       <div className="wrapper2 bg-light">
         <h1>
           {pokemon.nom} # {pokemon.numéro}

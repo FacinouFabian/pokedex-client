@@ -51,7 +51,7 @@ export const useTheme = (): any => React.useContext(ThemeContext);
 
 export default {
   initialState: {
-    value: "light",
+    value: "dark",
   },
   /**
    * @description designing the theme state shape
